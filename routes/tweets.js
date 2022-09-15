@@ -12,7 +12,7 @@ router.get("/alltweets", async (req, res) => {
   }
 });
 
-router.post("/addtweet", (req, res) => {
+router.post("/addtweet", async (req, res) => {
   try {
     const tempTweet = new Tweets({
       text: req.body.text,
@@ -20,7 +20,11 @@ router.post("/addtweet", (req, res) => {
       userid: req.body.userid,
       name: req.body.name,
     });
+    const response = await tempTweet.save();
+    res.status(201).json(response.tweetid);
   } catch (err) {
     res.status(400).json(err);
   }
 });
+
+module.exports = router;

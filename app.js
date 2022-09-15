@@ -3,6 +3,7 @@ const mongoose = require("mongoose");
 const cors = require("cors");
 
 const userRoute = require("./routes/users");
+const tweetRoute = require("./routes/tweets");
 
 const app = express();
 
@@ -25,5 +26,6 @@ mongoose.connect(
 );
 
 app.use("/users", userRoute);
+app.use("/tweets", tweetRoute);
 
 app.listen(4000);
