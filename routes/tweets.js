@@ -21,7 +21,7 @@ router.post("/addtweet", async (req, res) => {
       name: req.body.name,
     });
     const response = await tempTweet.save();
-    res.status(201).json(response.tweetid);
+    res.status(201).json(response);
   } catch (err) {
     res.status(400).json(err);
   }

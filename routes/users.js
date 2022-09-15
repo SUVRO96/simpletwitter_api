@@ -19,7 +19,7 @@ router.post("/adduser", async (req, res) => {
       name: req.body.name,
       email: req.body.email,
       mobile: req.body.mobile,
-      password: req.body.Password,
+      password: req.body.password,
     });
     const response = await tenpObj.save();
     res.status(201).json(response.userid);
@@ -33,7 +33,7 @@ router.post("/login", async (req, res) => {
   const tempEmail = req.body.email;
   const tempPassword = req.body.password;
   try {
-    const response = await User.find({
+    const response = await Users.find({
       email: tempEmail,
       password: tempPassword,
     });
